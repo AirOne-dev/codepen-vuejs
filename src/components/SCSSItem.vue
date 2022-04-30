@@ -11,6 +11,7 @@ export default {
   },
   methods:{
     updateSCSSContent(value, firstTime = false){
+      document.querySelector("#SCSSContent").parentNode.dataset.replicatedValue = value
       this.SCSSContent = hljs.highlight(value, {language: 'scss'}).value;
       Cookies.set("SCSSContent", value);
       if(!firstTime){
@@ -28,8 +29,14 @@ export default {
 
 <template>
   <code class="SCSS" v-html="SCSSContent"></code>
-  <textarea style="width: 100%; height: 100%;" @input="updateSCSSContent($event.target.value)" name="" id="SCSSContent" cols="30" rows="10">
-  </textarea>
+
+  <!--  un énorme merci à cette source : https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/-->
+  <div class="grow-wrap">
+    <textarea
+        @input="updateSCSSContent($event.target.value)"
+        id="SCSSContent"
+    ></textarea>
+  </div>
 </template>
 
 <style lang="scss">

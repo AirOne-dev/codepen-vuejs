@@ -11,6 +11,7 @@ export default {
   },
   methods:{
     updateHTMLContent(value, firstTime = false){
+      document.querySelector("#HTMLContent").parentNode.dataset.replicatedValue = value
       this.HTMLContent = hljs.highlight(value, {language: 'html'}).value;
       Cookies.set("HTMLContent", value);
       if(!firstTime){
@@ -28,8 +29,14 @@ export default {
 
 <template>
   <code class="html" v-html="HTMLContent"></code>
-  <textarea style="width: 100%; height: 100%;" @input="updateHTMLContent($event.target.value)" name="" id="HTMLContent" cols="30" rows="10">
-  </textarea>
+
+<!--  un énorme merci à cette source : https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/-->
+  <div class="grow-wrap">
+    <textarea
+        @input="updateHTMLContent($event.target.value)"
+        id="HTMLContent"
+    ></textarea>
+  </div>
 </template>
 
 <style lang="scss">
