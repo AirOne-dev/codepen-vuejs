@@ -61,6 +61,8 @@ export default {
             </svg>
             JS
           </a>
+
+          <a class="fullscreenButton" :href="this.renderLocation" target="_blank">Plein écran</a>
         </nav>
       </section>
       <section class="code">
