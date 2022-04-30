@@ -17,6 +17,11 @@ export default {
       if(!firstTime){
         document.querySelector("section.right iframe").contentDocument.location.reload(true);
       }
+    },
+    insertTab(event) {
+      event.preventDefault();
+      event.target.value += '  ';
+      this.updateHTMLContent(event.target.value);
     }
   },
   mounted() {
@@ -33,6 +38,7 @@ export default {
   <!--  un énorme merci à cette source : https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/-->
   <div class="grow-wrap">
     <textarea
+        @keydown.tab="insertTab($event)"
         @input="updateJSContent($event.target.value)"
         id="JSContent"
     ></textarea>
