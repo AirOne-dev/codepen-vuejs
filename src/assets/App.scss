@@ -127,3 +127,19 @@ body {
 footer {
   margin-top: auto;
 }
+
+@media screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    .left, .right {
+      width: 100%;
+    }
+    .left {
+      max-height: calc(50vh + 50px);
+    }
+    .right {
+      min-height: 100vh;
+      height: 100vh;
+    }
+  }
+}
