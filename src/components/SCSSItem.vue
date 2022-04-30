@@ -1,6 +1,6 @@
 <script>
 import hljs from "highlight.js/lib/common";
-import cookies from '../cookies.js';
+import Cookies from 'js-cookie'
 
 export default {
   name: "SCSSItem",
@@ -12,14 +12,14 @@ export default {
   methods:{
     updateSCSSContent(value, firstTime = false){
       this.SCSSContent = hljs.highlight(value, {language: 'scss'}).value;
-      cookies.setCookie("SCSSContent", value, 9999);
+      Cookies.set("SCSSContent", value);
       if(!firstTime){
         document.querySelector("section.right iframe").contentDocument.location.reload(true);
       }
     }
   },
   mounted() {
-    let cookie = cookies.getCookie("SCSSContent");
+    let cookie = Cookies.get("SCSSContent");
     this.updateSCSSContent(cookie, true);
     document.querySelector("#SCSSContent").value = cookie;
   }

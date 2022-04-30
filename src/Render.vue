@@ -1,13 +1,13 @@
 <script>
-import cookies from './cookies.js';
+import Cookies from 'js-cookie'
 
 export default {
   name: "RenderItem",
   data () {
     return {
-      HTMLContent: cookies.getCookie('HTMLContent'),
-      JSContent: cookies.getCookie('JSContent'),
-      SCSSContent: cookies.getCookie('SCSSContent'),
+      HTMLContent: Cookies.get('HTMLContent'),
+      JSContent: Cookies.get('JSContent'),
+      SCSSContent: Cookies.get('SCSSContent'),
     }
   },
   methods:{

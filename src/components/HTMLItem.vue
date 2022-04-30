@@ -1,6 +1,6 @@
 <script>
 import hljs from "highlight.js/lib/common";
-import cookies from '../cookies.js';
+import Cookies from 'js-cookie'
 
 export default {
   name: "HTMLItem",
@@ -12,14 +12,14 @@ export default {
   methods:{
     updateHTMLContent(value, firstTime = false){
       this.HTMLContent = hljs.highlight(value, {language: 'html'}).value;
-      cookies.setCookie("HTMLContent", value, 9999);
+      Cookies.set("HTMLContent", value);
       if(!firstTime){
         document.querySelector("section.right iframe").contentDocument.location.reload(true);
       }
     }
   },
   mounted() {
-    let cookie = cookies.getCookie("HTMLContent");
+    let cookie = Cookies.get("HTMLContent");
     this.updateHTMLContent(cookie, true);
     document.querySelector("#HTMLContent").value = cookie;
   }
