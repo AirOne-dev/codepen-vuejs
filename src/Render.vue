@@ -7,7 +7,7 @@ export default {
     return {
       HTMLContent: Cookies.get('HTMLContent'),
       JSContent: Cookies.get('JSContent'),
-      SCSSContent: Cookies.get('SCSSContent'),
+      SCSSContent: Cookies.get('CSSContent'),
     }
   },
   methods:{

@@ -63,7 +63,7 @@ body {
 
     .code {
       margin: 10px 0 0 10px;
-      height: calc(100% - 50px);
+      height: calc(100% - 60px);
       position: relative;
       background-color: #222;
       overflow: scroll;
@@ -140,6 +140,7 @@ footer {
     }
     .left {
       max-height: calc(50vh + 50px);
+      min-height: calc(50vh + 50px);
     }
     .right {
       min-height: 100vh;

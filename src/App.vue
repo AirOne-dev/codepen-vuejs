@@ -1,16 +1,14 @@
 <script>
-import HTMLItem from "./components/HTMLItem.vue";
-import SCSSItem from "./components/SCSSItem.vue";
-import JSItem from "./components/JSItem.vue";
+import FormItem from "./components/FormItem.vue";
 
 const routes = {
-  "" : HTMLItem,
-  "#CSS" : SCSSItem,
-  "#JS" : JSItem
+  "" : {"component" : FormItem, "name": "HTMLContent", "language": "html"},
+  "#CSS" : {"component" : FormItem, "name": "CSSContent", "language": "scss"},
+  "#JS" : {"component" : FormItem, "name": "JSContent", "language": "javascript"}
 }
 
 export default {
-  components: { HTMLItem, SCSSItem, JSItem },
+  components: { FormItem },
   data() {
     return {
       location: "",
@@ -18,11 +16,8 @@ export default {
     }
   },
   computed: {
-    page() {
-      return this.location
-    },
     view() {
-      return routes[this.page]
+      return routes[this.location]
     }
   },
   mounted() {
@@ -66,9 +61,9 @@ export default {
         </nav>
       </section>
       <section class="code">
-        <keep-alive>
-          <component :is="view" />
-        </keep-alive>
+        <FormItem v-if="location === ''" language="html" name="HTMLContent" />
+        <FormItem v-if="location === '#CSS'" language="scss" name="CSSContent" />
+        <FormItem v-if="location === '#JS'" language="javascript" name="JSContent" />
       </section>
     </section>
     <section class="right">
