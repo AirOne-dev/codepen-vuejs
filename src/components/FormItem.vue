@@ -51,6 +51,7 @@ export default {
         @keydown.tab="insertTab($event)"
         @input="updateContent($event.target.value)"
         :id="this.name"
+        rows="1"
     ></textarea>
   </div>
 </template>
